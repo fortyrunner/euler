@@ -4,6 +4,7 @@ import (
   "fmt"
   "math"
 )
+import "strconv"
 
 
 
@@ -11,15 +12,16 @@ func main() {
   problem1()
   problem2()
   problem3()
+  problem4()
 }
 
 
 func problem1() {
   fmt.Println("Project Euler - Problem 1. Find the sum of all the multiples of 3 or 5 below 1000")
 
-  upper_bound := 1000
+  upperBound := 1000
   sum := 0
-  for i := 0; i < upper_bound; i++ {
+  for i := 0; i < upperBound; i++ {
 
     if i % 5 == 0 {
       sum += i
@@ -28,7 +30,7 @@ func problem1() {
     }
   }
 
-  fmt.Printf("-->Answer - Sum of 3/5 multiples less than %d is %d\n\n", upper_bound, sum)
+  fmt.Printf("-->Answer - Sum of 3/5 multiples less than %d is %d\n\n", upperBound, sum)
 
 }
 
@@ -63,21 +65,56 @@ func problem3() {
 
   number := 600851475143
 
-  upper_bound := int(math.Sqrt(float64(number))) + 1
+  upperBound := int(math.Sqrt(float64(number))) + 1
 
-  fmt.Printf("The upper bound for factors is %d\n", upper_bound)
+  fmt.Printf("The upper bound for factors is %d\n", upperBound)
 
-  for i := upper_bound; i > 2; i-- {
+  for i := upperBound; i > 2; i-- {
 
     if isPrime(i) {
 
       if number % i == 0 {
-        fmt.Printf("-->Answer Largest prime factor of %d is %d\n\n", number, i)
+        fmt.Printf("-->Answer: Largest prime factor of %d is %d\n\n", number, i)
 
         break
       }
     }
   }
+}
+
+func problem4() {
+
+  fmt.Println("Project Euler - Problem 4. Find the largest palindrome made from the product of two 3-digit numbers")
+
+  max := 0;
+  for i := 999; i >= 100; i-- {
+    for j := 999; j >= 100; j-- {
+      product := i * j
+
+      if isPalindrome(product) {
+        if product > max {
+          max = product
+        }
+      }
+    }
+  }
+
+  fmt.Printf("-->Answer: The maximum palindrome of two 3 digit numbers is %d", max)
+
+}
+
+func isPalindrome(p int) bool {
+
+  s := strconv.Itoa(p)
+
+  midpoint := len(s) / 2
+
+  for i := 0; i < midpoint; i++ {
+    if s[i] != s[len(s) - i - 1] {
+      return false
+    }
+  }
+  return true
 }
 
 func isPrime(n int) bool {
