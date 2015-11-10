@@ -3,8 +3,9 @@ package main
 import (
   "fmt"
   "math"
+  "strconv"
 )
-import "strconv"
+
 
 
 
@@ -143,3 +144,4 @@ func isPrime(n int) bool {
   }
   return true
 }
+
