@@ -23,12 +23,24 @@ func main() {
     for i := 0; i < 1000; i++ {
 
         // respect the end boundary of the array (last digit is zero - don't need it)
+        // Note that checking for 0 speeds up from 19 microseconds to 16
+        // Checking for 1 makes it slower... if conditions are pricey
 
         if (i + 13) < 1000 {
 
             inner := 1
             for offset := 0; offset < 13; offset++ {
+
+                // Use Ascii magic to convert a character into a digit
+                // Tricks first learned in 1984 still work...
+
                 ch := int(number[i + offset])-int('0')
+
+                if ch == 0  {
+                    inner = 0
+                    break
+                }
+
 
                 inner = inner * ch
                 //fmt.Printf("%d\n", ch)
