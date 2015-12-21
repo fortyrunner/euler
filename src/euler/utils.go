@@ -47,6 +47,11 @@ func IsPrime(n int) bool {
     return true
 }
 
+func Ctoi(b byte) int {
+    return int(b)-int('0')
+
+}
+
 func LoadsOfPrimes() {
 
     value := 10000000
