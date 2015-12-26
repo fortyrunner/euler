@@ -7,7 +7,7 @@ import (
 
 func main() {
 
-	fmt.Println("Problem n. ")
+	fmt.Println("Problem 9. ")
 	start := time.Now()
 
 	answer := 0
