@@ -28,7 +28,31 @@ func TestIsPalindrome(t *testing.T) {
         t.Error("43 should be a palindrome of itself")
     }
 
+}
 
+
+func TestIsPrime(t *testing.T) {
+
+    if IsPrime(1){
+        t.Error("1 is not a prime")
+    }
+
+    if !IsPrime(2){
+        t.Error("2 IS a prime")
+    }
+
+    if !IsPrime(3){
+        t.Error("3 IS a prime")
+    }
+
+    if !IsPrime(101){
+        t.Error("101 IS a prime")
+    }
+
+
+    if IsPrime(1717172727272){
+        t.Error("1717172727272 is not a prime")
+    }
 
 
 }
